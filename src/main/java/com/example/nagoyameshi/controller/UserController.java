@@ -94,10 +94,10 @@ public class UserController {
 
 	@PostMapping("/password/update")
 	public String passwordUpdate(@ModelAttribute @Validated PasswordEditForm passwordEditForm,
-			@AuthenticationPrincipal UserDetailsImpl userDetailsImpl, BindingResult bindingResult,
+			BindingResult bindingResult, @AuthenticationPrincipal UserDetailsImpl userDetailsImpl,
 			RedirectAttributes redirectAttributes, Model model) {
 		User user = userDetailsImpl.getUser();
-		
+
 		// 新しいパスワードと新しいパスワード（確認用）の入力値が一致しなければエラー
 		if (!userService.isSamePassword(passwordEditForm.getPassword(),
 				passwordEditForm.getPasswordConfirmation())) {
